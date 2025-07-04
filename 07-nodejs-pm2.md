@@ -182,4 +182,4 @@ pm2 restart all
 
 ## Next Steps
 
-Continue with [Load Balancer Configuration](./10-load-balancer.md) for advanced traffic management.
+Continue with [Laravel Configuration](./08-laravel-nginx.md) for PHP framework setup.

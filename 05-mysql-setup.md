@@ -81,4 +81,4 @@ mysql -u username -p database_name < backup.sql
 
 ## Next Steps
 
-Continue with [SSL Certificates with Certbot](./09-ssl-certbot.md) for secure HTTPS setup.
+Continue with [Docker Deployment](./06-docker-deployment.md) for containerized application deployment.

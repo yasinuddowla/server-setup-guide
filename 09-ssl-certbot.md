@@ -221,4 +221,4 @@ sudo systemctl reload nginx
 
 ## Next Steps
 
-Continue with [Debugging & Logs](./11-debugging.md) for troubleshooting common issues.
+Continue with [Load Balancer Configuration](./10-load-balancer.md) for advanced traffic management and scalability.
