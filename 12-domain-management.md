@@ -33,35 +33,6 @@ _dmarc          IN TXT   "v=DMARC1; p=none; rua=mailto:dmarc@example.com"
 _acme-challenge IN TXT   "verification-string-here"
 ```
 
-## Domain Examples from Configuration
-
-### Dana Staging Server Domains
-```nginx
-# Example domain configurations for staging environment
-ai.sdk.staging.dana.money.conf
-blackbox.staging.dana.money.conf
-partner.staging.dana.money.conf
-api.staging.dana.money.conf
-console.staging.dana.money.conf
-supplier.staging.dana.money.conf
-app.staging.dana.money.conf
-assets.staging.dana.money.conf
-lender.staging.dana.money.conf
-```
-
-### Kube Money Domain Structure
-```nginx
-# Production domains
-kube.money                  # Port 3000 - Main application
-api.kube.money             # Port 9001 - API service
-assets.kube.money          # Port 9002 - Assets service
-console.kube.money         # Port 9003 - Console service
-web.sdk.kube.money         # Port 9004 - Web SDK
-webadmin.kube.money        # Port 9005 - Web admin
-platform.kube.money        # Port 9006 - Platform service
-staging.kube.money         # Port 9009 - Staging environment
-```
-
 ## Multi-Domain Nginx Configuration
 
 ### Single Server Block for Multiple Domains
@@ -134,38 +105,38 @@ server {
 
 ### Pre-Deployment Checklist
 1. **DNS Configuration**
-   - [ ] A/AAAA records pointing to server IP
-   - [ ] CNAME records for subdomains (if needed)
-   - [ ] MX records for email (if needed)
-   - [ ] TTL values set appropriately
+   - A/AAAA records pointing to server IP
+   - CNAME records for subdomains (if needed)
+   - MX records for email (if needed)
+   - TTL values set appropriately
 
 2. **Security Groups/Firewall**
-   - [ ] Port 80 (HTTP) open
-   - [ ] Port 443 (HTTPS) open
-   - [ ] Port 22 (SSH) restricted to specific IPs
-   - [ ] Port 3306 (MySQL) open only for DB server
+   - Port 80 (HTTP) open
+   - Port 443 (HTTPS) open
+   - Port 22 (SSH) restricted to specific IPs
+   - Port 3306 (MySQL) open only for DB server
 
 3. **SSL Certificates**
-   - [ ] Certificates generated for all domains
-   - [ ] Auto-renewal configured
-   - [ ] Certificate includes all necessary domains
+   - Certificates generated for all domains
+   - Auto-renewal configured
+   - Certificate includes all necessary domains
 
 ### Post-Deployment Checklist
 1. **GitHub Configuration**
-   - [ ] SSH private keys updated in repository secrets
-   - [ ] Server names updated in deployment scripts
-   - [ ] Deploy via GitHub Actions or manual upload
+   - SSH private keys updated in repository secrets
+   - Server names updated in deployment scripts
+   - Deploy via GitHub Actions or manual upload
 
 2. **Database Setup**
-   - [ ] Database imported (allow 10+ minutes for large files)
-   - [ ] Database user permissions configured
-   - [ ] Remote access configured if needed
+   - Database imported (allow 10+ minutes for large files)
+   - Database user permissions configured
+   - Remote access configured if needed
 
 3. **Testing**
-   - [ ] All domains accessible via HTTPS
-   - [ ] SSL certificates valid
-   - [ ] Application functionality verified
-   - [ ] Performance acceptable
+   - All domains accessible via HTTPS
+   - SSL certificates valid
+   - Application functionality verified
+   - Performance acceptable
 
 ## Wildcard Domain Configuration
 
