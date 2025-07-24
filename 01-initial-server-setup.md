@@ -46,7 +46,7 @@ nano ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 
 Customize the prompt:
 ```bash
-PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg_bold[cyan]%}kube-space-01: %{$fg[cyan]%}%c%{$reset_color%}"
+PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg_bold[cyan]%}yasinuddowla: %{$fg[cyan]%}%c%{$reset_color%}"
 ```
 
 Apply changes:

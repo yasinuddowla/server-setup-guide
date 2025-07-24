@@ -58,18 +58,18 @@ upstream backend {
 }
 ```
 
-## Kube Load Balancer Example
+## Load Balancer Example
 
 ### Load Balancer Configuration
 ```nginx
 # Staging environment
 upstream staging {
-    server 18.169.153.145:9009;
+    server app-ip:9009;
 }
 
 server {
     listen 80;
-    server_name staging.kube.money;
+    server_name staging.example.com;
 
     location / {
         proxy_pass http://staging;
@@ -105,7 +105,7 @@ upstream console_service {
 # Main domain
 server {
     listen 80;
-    server_name kube.money;
+    server_name example.com;
     
     location / {
         proxy_pass http://main_app;
@@ -116,7 +116,7 @@ server {
 # API subdomain
 server {
     listen 80;
-    server_name api.kube.money;
+    server_name api.example.com;
     
     location / {
         proxy_pass http://api_service;
@@ -127,7 +127,7 @@ server {
 # Assets subdomain
 server {
     listen 80;
-    server_name assets.kube.money;
+    server_name assets.example.com;
     
     location / {
         proxy_pass http://assets_service;
@@ -138,7 +138,7 @@ server {
 # Console subdomain
 server {
     listen 80;
-    server_name console.kube.money;
+    server_name console.example.com;
     
     location / {
         proxy_pass http://console_service;

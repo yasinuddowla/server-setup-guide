@@ -139,7 +139,7 @@ upstream staging {
 
 server {
     listen 80;
-    server_name staging.kube.money;
+    server_name staging.example.com;
 
     location / {
         proxy_pass http://staging;
@@ -149,18 +149,6 @@ server {
     }
 }
 ```
-
-## Port Management
-
-Common ports used in load balancer setup:
-- `3000` - kube.money
-- `9001` - api.kube.money
-- `9002` - assets.kube.money
-- `9003` - console.kube.money
-- `9004` - web.sdk.kube.money
-- `9005` - webadmin.kube.money
-- `9006` - platform.kube.money
-- `9009` - staging.kube.money
 
 ## Troubleshooting
 
