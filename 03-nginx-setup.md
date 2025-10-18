@@ -68,11 +68,21 @@ server {
         fastcgi_pass unix:/run/php/php8.3-fpm.sock;
     }
 
-    # Deny access to .env and other sensitive files
-    location ~ /\. {
+    # Block hidden files (.env, .git, etc.)
+    location ~ /\.(?!well-known).* {
         deny all;
         access_log off;
         return 404;
+    }
+    
+    # Optional: block WP paths if not using WP
+    location ~* /(wp-admin|wp-includes|wp-content)/ {
+        deny all;
+    }
+    
+    # Disable PHP execution in uploads or unexpected dirs
+    location ~* /uploads/.*\.php$ {
+        deny all;
     }
 }
 ```
