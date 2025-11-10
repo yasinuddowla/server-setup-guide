@@ -16,6 +16,7 @@ A comprehensive guide for setting up and configuring servers with various techno
 ### Application Deployment
 - [Docker Deployment](./06-docker-deployment.md) - Docker and Docker Compose setup
 - [Node.js & PM2 Setup](./07-nodejs-pm2.md) - Node.js installation and process management
+- [Python & Gunicorn Setup](./13-python-setup.md) - Python installation and Gunicorn WSGI server
 - [Laravel Configuration](./08-laravel-nginx.md) - Laravel-specific Nginx configuration
 
 ### Security & SSL
