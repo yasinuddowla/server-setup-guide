@@ -118,7 +118,7 @@ sudo systemctl reload nginx
 
 ### Update Nginx Configuration
 ```bash
-sudo nano /etc/nginx/sites-available/pasta.conf
+sudo nano /etc/nginx/sites-available/your_domain.conf
 ```
 
 Add inside server block:
