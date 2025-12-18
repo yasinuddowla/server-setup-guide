@@ -8,6 +8,13 @@ Installation and configuration of MySQL database server.
 sudo apt install mysql-server
 ```
 
+## Install MySQL Client
+
+```bash
+# Only for application servers
+sudo apt install mysql-client
+```
+
 ## Initial MySQL Setup
 
 ### Set Root Password
@@ -17,7 +24,7 @@ sudo mysql
 
 Run these commands in MySQL:
 ```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'DB@$#root';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 FLUSH PRIVILEGES;
 exit;
 ```

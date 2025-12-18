@@ -58,9 +58,6 @@ source ~/.zshrc
 
 ```bash
 sudo apt install zip unzip
-
-# Only for application servers
-sudo apt install mysql-client
 ```
 
 ## Next Steps
