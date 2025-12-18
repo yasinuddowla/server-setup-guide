@@ -12,20 +12,78 @@ sudo apt upgrade
 
 ### Install Required Dependencies
 ```bash
-sudo apt install -y curl
+sudo apt install -y curl build-essential
 ```
 
-### Install Node.js (Version 20)
+### Install NVM (Node Version Manager)
 ```bash
-# Download Node.js setup script
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+# Download and install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-# Install Node.js
-sudo apt install -y nodejs
+# Load nvm in current shell session
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Verify nvm installation
+nvm --version
+```
+
+**Note:** To make nvm available in new terminal sessions, add the following to your `~/.bashrc` or `~/.zshrc`:
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+```
+
+### Install Node.js (Latest Version)
+```bash
+# Install latest LTS version of Node.js
+nvm install --lts
+
+# Set as default version
+nvm use --lts
+nvm alias default node
 
 # Verify installation
 node --version
 npm --version
+```
+
+**Alternative:** To install the absolute latest version (not just LTS):
+```bash
+nvm install node
+nvm use node
+nvm alias default node
+```
+
+### Install Specific Node.js Version (Optional)
+If you need a specific version:
+```bash
+# Install specific major version (e.g., version 20)
+nvm install 20
+
+# Install specific version (e.g., 20.11.0)
+nvm install 20.11.0
+
+# Set as default
+nvm use 20
+nvm alias default 20
+```
+
+### Additional NVM Commands
+```bash
+# List installed Node.js versions
+nvm list
+
+# List available Node.js versions
+nvm list-remote
+
+# Switch between Node.js versions
+nvm use node
+nvm use --lts
+nvm use 20
+nvm use 18
 ```
 
 ## PM2 Installation and Setup
