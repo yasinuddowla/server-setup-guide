@@ -31,6 +31,27 @@ A comprehensive guide for setting up and configuring servers with various techno
 
 ## Quick Start
 
+### Automated Installation
+
+For a quick automated setup, use the interactive installation script:
+
+```bash
+sudo ./scripts/server-setup.sh
+```
+
+This script will guide you through installing:
+- PHP with extensions (version selectable)
+- MySQL database server (with optional DB/user creation)
+- Node.js via NVM (version selectable)
+- Python with optional Gunicorn
+- Nginx web server
+- PM2 process manager
+- Certbot for SSL certificates
+
+See [Server Setup Script Documentation](./server-setup.md) for detailed information.
+
+### Manual Installation
+
 For a basic LAMP stack setup, follow these guides in order:
 1. [Initial Server Setup](./01-initial-server-setup.md)
 2. [Ubuntu System Management](./02-ubuntu-system.md)
