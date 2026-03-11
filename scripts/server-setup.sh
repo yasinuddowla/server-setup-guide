@@ -123,10 +123,10 @@ prompt_yes_no() {
     
     while true; do
         if [ "$default" = "y" ]; then
-            read -p "$(echo -e ${BLUE}$prompt [Y/n]: ${NC})" response
+            read -e -p "$(echo -e ${BLUE}$prompt [Y/n]: ${NC})" response
             response=${response:-y}
         else
-            read -p "$(echo -e ${BLUE}$prompt [y/N]: ${NC})" response
+            read -e -p "$(echo -e ${BLUE}$prompt [y/N]: ${NC})" response
             response=${response:-n}
         fi
         
@@ -144,10 +144,10 @@ prompt_input() {
     local response
     
     if [ -n "$default" ]; then
-        read -p "$(echo -e ${BLUE}$prompt [$default]: ${NC})" response
+        read -e -p "$(echo -e ${BLUE}$prompt [$default]: ${NC})" response
         echo "${response:-$default}"
     else
-        read -p "$(echo -e ${BLUE}$prompt: ${NC})" response
+        read -e -p "$(echo -e ${BLUE}$prompt: ${NC})" response
         echo "$response"
     fi
 }
@@ -308,7 +308,7 @@ execute_mysql_command() {
     if [ "$use_sudo" = false ] && [ -z "$MYSQL_ROOT_PASSWORD" ]; then
         echo -e "${YELLOW}[WARNING]${NC} MySQL requires authentication. Please enter root password."
         echo -e "${BLUE}Enter MySQL root password (hidden): ${NC}"
-        read -s MYSQL_ROOT_PASSWORD
+        read -es MYSQL_ROOT_PASSWORD
         echo ""
         
         if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
@@ -355,7 +355,7 @@ install_mysql() {
     # Set root password
     if prompt_yes_no "Set/Change MySQL root password?" "y"; then
         echo -e "${BLUE}Enter MySQL root password (hidden): ${NC}"
-        read -s MYSQL_ROOT_PASSWORD
+        read -es MYSQL_ROOT_PASSWORD
         echo ""
         MYSQL_ROOT_PASSWORD=$(echo "$MYSQL_ROOT_PASSWORD" | tr -d ' ')
         if [ -n "$MYSQL_ROOT_PASSWORD" ]; then
@@ -405,7 +405,7 @@ EOF
         if [ "$CREATE_MYSQL_DB" = true ] && [ -n "$MYSQL_DB_NAME" ]; then
             MYSQL_DB_USER=$(prompt_input "Enter database user name" "")
             echo -e "${BLUE}Enter database user password (hidden): ${NC}"
-            read -s MYSQL_DB_PASSWORD
+            read -es MYSQL_DB_PASSWORD
             echo ""
             
             # Ask which database to grant privileges on
@@ -414,7 +414,7 @@ EOF
         else
             MYSQL_DB_USER=$(prompt_input "Enter database user name" "")
             echo -e "${BLUE}Enter database user password (hidden): ${NC}"
-            read -s MYSQL_DB_PASSWORD
+            read -es MYSQL_DB_PASSWORD
             echo ""
             GRANT_DB=$(prompt_input "Enter database name to grant privileges on" "")
         fi

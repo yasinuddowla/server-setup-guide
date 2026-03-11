@@ -27,16 +27,18 @@ show_usage() {
     exit 1
 }
 
-# Check if script is run with correct arguments
-if [ "$#" -ne 1 ]; then
-    show_usage
+# Get domain from argument or prompt
+if [ -n "$1" ]; then
+    DOMAIN="$1"
+else
+    read -e -p "$(echo -e ${BLUE}"Enter domain name to remove: "${NC})" DOMAIN
+    [ -z "$DOMAIN" ] && { echo -e "${RED}Error: Domain name is required.${NC}"; exit 1; }
 fi
 
-DOMAIN=$1
-
-# Validate domain format (basic check)
-if [[ ! "$DOMAIN" =~ ^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$ ]]; then
-    echo -e "${RED}Error: Invalid domain format: $DOMAIN${NC}"
+# Validate domain format (basic check — allow IPs too)
+if [[ ! "$DOMAIN" =~ ^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$ ]] && \
+   [[ ! "$DOMAIN" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo -e "${RED}Error: Invalid domain/IP format: $DOMAIN${NC}"
     exit 1
 fi
 
@@ -63,6 +65,7 @@ find_nginx_configs() {
         fi
     done
     
+    [ ${#configs[@]} -eq 0 ] && return
     printf '%s\n' "${configs[@]}"
 }
 
@@ -154,7 +157,7 @@ remove_ssl_certificates() {
         echo -e "${YELLOW}Found Let's Encrypt certificate for: $domain${NC}"
         echo "Certificate location: $letsencrypt_dir"
         
-        read -p "Remove SSL certificate? (y/N): " -n 1 -r
+        read -e -p "Remove SSL certificate? (y/N): " -n 1 -r
         echo
         
         if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -257,7 +260,7 @@ show_summary() {
 
 # Main execution
 echo -e "${YELLOW}⚠ WARNING: This will permanently remove the domain configuration and SSL certificates!${NC}"
-read -p "Are you sure you want to continue? (y/N): " -n 1 -r
+read -e -p "Are you sure you want to continue? (y/N): " -n 1 -r
 echo
 
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then

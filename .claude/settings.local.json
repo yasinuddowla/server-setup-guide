@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /Users/yasinuddowla/dev/projects/server-setup-guide/scripts/add-static-domain.sh /Users/yasinuddowla/dev/projects/server-setup-guide/scripts/add-laravel-domain.sh)"
+    ]
+  }
+}

@@ -10,7 +10,7 @@ DB_NAME=$1
 USER_NAME=$2
 
 # Prompt for MySQL root password
-read -sp "Enter MySQL root password: " MYSQL_ROOT_PASS
+read -esp "Enter MySQL root password: " MYSQL_ROOT_PASS
 
 # Execute MySQL commands
 mysql -u root -p"$MYSQL_ROOT_PASS" <<EOF

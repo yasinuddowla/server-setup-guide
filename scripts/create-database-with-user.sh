@@ -12,7 +12,7 @@ USER_NAME=$2
 USER_PASSWORD=$3
 
 # Prompt for MySQL root password
-read -sp "Enter MySQL root password: " MYSQL_ROOT_PASS
+read -esp "Enter MySQL root password: " MYSQL_ROOT_PASS
 echo
 
 # Execute MySQL commands
